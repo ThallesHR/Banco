@@ -1,52 +1,79 @@
-import banco.Banco;
-import banco.Cliente;
-import banco.Conta;
+import banco.*;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Criando clientes");
-        Cliente YuriALberto = new Cliente("Yuri ", " Alberto");
-        System.out.println("Cliente Criado com sucesso: Yuri Alberto");
-        Cliente HugoSouza = new Cliente("Hugo ", " Souza");
-        System.out.println("Cliente Criado com sucesso Hugo Souza");
-        Cliente Memphis = new Cliente("Memphis ", "Depay");
-        System.out.println("Cliente Criado com sucesso Memphis Depay");
-        Cliente Tiquinho = new Cliente("Tiquinho ", " Soares");
-        System.out.println("Cliente Criado com sucesso Tiquinho Soares");
-        Cliente YagoPikachu = new Cliente("Yago ", " Pikachu");
-        System.out.println("Cliente Criado com sucesso Yago Pikachu");
-        System.out.println("Criando contas");
-        System.out.println("Contas Criadas com sucesso");
-        System.out.println("Adicionando R$150.000 a conta de Yuri Alberto");
-        Conta contaYuriALberto = new Conta(150_000);
-        YuriALberto.setConta(contaYuriALberto);
-        System.out.println("Adicionando R$200.000 a conta de Hugo Souza");
-        Conta contaHugoSouza = new Conta(200_000);
-        HugoSouza.setConta(contaHugoSouza);
-        System.out.println("Adicionando R$150.000 a conta de Memphis Depay");
-        Conta contaMemphis = new Conta(100_000);
-        Memphis.setConta(contaMemphis);
-        System.out.println("Adicionando R$150.000 a conta de Tiquinho Soares");
-        Conta contaTiquinho = new Conta(70_000);
-        Tiquinho.setConta(contaTiquinho);
-        System.out.println("Adicionando R$150.000 a conta de Yago Pikachu");
-        Conta contaYago = new Conta(50_000);
-        YagoPikachu.setConta(contaYago);
+        System.out.println("Bem vindo ao Seu Sistema Bancário");
+        System.out.println("...Iniciando Sistema de CLientes...");
+        System.out.println("Criando Cliente Yuri Alberto");
+        Cliente YuriAlberto = new Cliente("Yuri", "Alberto");
+        System.out.println("Criando Cliente Memphis Depay");
+        Cliente MemphisDepay = new Cliente("Memphis", "Depay");
+        System.out.println("Criando Cliente Hugo Souza");
+        Cliente HugoSouza = new Cliente("Hugo", "Souza");
+        System.out.println("Criando Cliente Juanito Silva");
+        Cliente juanitoSilva = new Cliente("Juanito", "Silva");
+        System.out.println("Criando Cliente Bruno Henrique");
+        Cliente brunoHenrique = new Cliente("Bruno", "Henrique");
+        System.out.println("----Criando Contas Bancárias");
+        System.out.println("Criando uma conta corrente ao cliente Yuri Alberto");
+        Conta ContaYuriAlberto = new ContaCorrente(50.000,10.000);
+        YuriAlberto.setConta(ContaYuriAlberto);
+        System.out.println("Criando uma conta poupança ao cliente Memphis Depay");
+        Conta ContaMemphisDepay = new ContaPoupanca(150.000,1.0);
+        MemphisDepay.setConta(ContaMemphisDepay);
+        System.out.println("Criando uma conta corrente ao cliente Hugo Souza");
+        Conta ContaHugoSouza = new ContaCorrente(70.000,10.000);
+        HugoSouza.setConta(ContaHugoSouza);
+        System.out.println("Criando uma conta corrente ao cliente Juanito Silva");
+        Conta ContaJuanitoSilva = new ContaCorrente(10.000,1.0);
+        juanitoSilva.setConta(ContaJuanitoSilva);
+        System.out.println("Criando uma conta corrente ao cliente Bruno Henrique");
+        Conta ContaBrunoHenrique = new ContaCorrente(150.000,1.0);
+        brunoHenrique.setConta(ContaBrunoHenrique);
+
+
+
+
 
         System.out.println("Adicionando ao banco");
         Banco banco = new Banco();
-        banco.adicionarCliente(YuriALberto);
+        banco.adicionarCliente(YuriAlberto);
+        banco.adicionarCliente(MemphisDepay);
         banco.adicionarCliente(HugoSouza);
-        banco.adicionarCliente(Memphis);
-        banco.adicionarCliente(Tiquinho);
-        banco.adicionarCliente(YagoPikachu);
+        banco.adicionarCliente(juanitoSilva);
+        banco.adicionarCliente(brunoHenrique);
 
         for (int i = 0; i < banco.getNumeroDeClientes(); i++) {
             Cliente cliente = banco.getCliente(i);
             Conta conta = cliente.getConta();
-            System.out.println("Cliente: ["+(i+1)+"]:"+cliente.getNome()+""+cliente.getSobrenome()+"."+"Saldo "+"R$"+ cliente.getConta().getSaldo());
+            String temp = "Cliente [" + (i + 1) + "] : " +
+                    cliente.getNome() + " " +
+                    cliente.getSobrenome() + "." +
+                    " Saldo R$:" + conta.getSaldo();
+            System.out.println(temp);
+
+        }
+        System.out.println("--------TRANSAÇÕES-------");
+        System.out.println("Sacando R$:10,000 do cliente Bruno Henrique");
+        ContaBrunoHenrique.sacar(10.000);
+        System.out.println("Depositando R$:5,000 ao cliente Yuri Alberto");
+        ContaYuriAlberto.depositar(5.000);
+        System.out.println("Depositando R$:10,000 ao cliente Memphis Depay");
+        ContaMemphisDepay.depositar(10.000);
+        System.out.println("Sacando R$:40,000 ao cliente Hugo Souza");
+        ContaHugoSouza.sacar(40.000);
+        System.out.println("Segue abaixo o Saldo de Todos os Clientes");
+        for (int i = 0; i < banco.getNumeroDeClientes(); i++) {
+            Cliente cliente = banco.getCliente(i);
+            Conta conta = cliente.getConta();
+            String temp = "Cliente [" + (i + 1) + "] : " +
+                    cliente.getNome() + " " +
+                    cliente.getSobrenome() + "." +
+                    " Saldo R$:" + conta.getSaldo();
+            System.out.println(temp);
+
         }
     }
 }
