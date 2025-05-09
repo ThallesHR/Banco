@@ -3,23 +3,23 @@ import java.util.ArrayList;
 
 public class Banco {
 
-    private Cliente[] clientes;
+    private ArrayList<Cliente> clientes;
     private int numeroClientes;
 
     public Banco() {
-        this.clientes = new Cliente[5];
+         clientes = new ArrayList<>(5);
     }
 
     public void adicionarCliente(Cliente cliente) {
-        clientes[numeroClientes] = cliente;
-        numeroClientes++;
+        clientes.add(cliente);
+
     }
 
     public Cliente getCliente(int indice) {
-        return clientes[indice];
+        return clientes.get(indice);
     }
 
     public int getNumeroDeClientes() {
-        return this.numeroClientes;
+        return this.clientes.size();
     }
 }
