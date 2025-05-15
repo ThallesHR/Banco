@@ -45,16 +45,7 @@ public class Main {
         banco.adicionarCliente(juanitoSilva);
         banco.adicionarCliente(brunoHenrique);
 
-        for (int i = 0; i < banco.getNumeroDeClientes(); i++) {
-            Cliente cliente = banco.getCliente(i);
-            Conta conta = cliente.getConta();
-            String temp = "Cliente [" + (i + 1) + "] : " +
-                    cliente.getNome() + " " +
-                    cliente.getSobrenome() + "." +
-                    " Saldo R$:" + conta.getSaldo();
-            System.out.println(temp);
 
-        }
         System.out.println("--------TRANSAÇÕES-------");
         System.out.println("Sacando R$:10,000 do cliente Bruno Henrique");
         ContaBrunoHenrique.sacar(10.000);
@@ -65,15 +56,16 @@ public class Main {
         System.out.println("Sacando R$:40,000 ao cliente Hugo Souza");
         ContaHugoSouza.sacar(40.000);
         System.out.println("Segue abaixo o Saldo de Todos os Clientes");
-        for (int i = 0; i < banco.getNumeroDeClientes(); i++) {
-            Cliente cliente = banco.getCliente(i);
-            Conta conta = cliente.getConta();
-            String temp = "Cliente [" + (i + 1) + "] : " +
-                    cliente.getNome() + " " +
-                    cliente.getSobrenome() + "." +
-                    " Saldo R$:" + conta.getSaldo();
-            System.out.println(temp);
+        ///for (int i = 0; i < banco.getNumeroDeClientes(); i++) {
+        /// Cliente cliente = banco.getCliente(i);
+        ///Conta conta = cliente.getConta();
+        ///String temp = "Cliente [" + (i + 1) + "] : " +
+        ///cliente.getNome() + " " +
+        ///cliente.getSobrenome() + "." +
+        /// " Saldo R$:" + conta.getSaldo();
+        ///System.out.println(temp);
+
+        ///}
 
         }
     }
-}

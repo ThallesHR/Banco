@@ -1,6 +1,6 @@
 package banco;
 
-public class Conta {
+public class Conta extends Banco {
 
     protected double saldo;
 
@@ -24,6 +24,5 @@ public class Conta {
         }
         return false;
     }
-
 
 }
