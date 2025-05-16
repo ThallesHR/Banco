@@ -10,7 +10,18 @@ public class ContaCorrente extends Conta {
     public ContaCorrente(double SaldoInicial) {
     this(SaldoInicial,0.0);
     }
+
+    public void setContaPoupanca(ContaPoupanca contaPoupanca) {
+        this.contaPoupanca = contaPoupanca;
+    }
+
+    public ContaPoupanca getContaPoupanca() {
+        return contaPoupanca;
+    }
+
+    @Override
     public boolean sacar(double valor) {
+        double SaldoTotal = getSaldo();
         if (valor > this.saldo + this.chequeEspecial) {
             return false;
         }

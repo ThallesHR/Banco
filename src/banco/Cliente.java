@@ -2,10 +2,12 @@ package banco;
 
 import java.util.ArrayList;
 
-public class Cliente {
+public class Cliente   {
     private String nome;
     private String sobrenome;
     private ArrayList<Conta> contas;
+    ContaPoupanca contaPoupanca;
+    ContaCorrente contaCorrente;
 
     public Cliente(String nome, String sobrenome) {
         this.nome = nome;
@@ -46,6 +48,21 @@ public class Cliente {
     }
     public void setConta(Conta conta) {
         this.contas.add(conta);
+    }
+
+    public void setContaCorrente(ContaCorrente contaCorrente) {
+        this.contaCorrente = contaCorrente;
+    }
+
+    public ContaCorrente getContaCorrente() {
+        return contaCorrente;
+    }
+
+    public void setcontaPoupanca(ContaPoupanca contaPoupanca) {
+        this.contaPoupanca = contaPoupanca;
+    }
+    public ContaPoupanca getContaPoupanca() {
+        return contaPoupanca;
     }
 
 }
