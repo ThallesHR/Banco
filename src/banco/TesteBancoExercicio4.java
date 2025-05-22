@@ -16,13 +16,13 @@ public class TesteBancoExercicio4 {
 
         System.out.println("\nCriando uma conta corrente com saldo de R$ 220.000,00" +
                 " para o cliente Bruno Henrique.");
-        corrente = new ContaCorrente(220000.00, poupanca);
+        corrente = new ContaCorrente(220000.00);
 
         banco.adicionarCliente(brunoHenrique);
         Cliente cliente = banco.getCliente(0); // Demonstrando que após adicionado, podemos obter o cliente
         // caso saibamos o indice dele lista de clientes do banco
 
-        cliente.setContaPoupanca(poupanca);
+        cliente.setcontaPoupanca(poupanca);
         cliente.setContaCorrente(corrente);
 
         // Criação do cliente Diego Alves e sua respectiva conta corrente sem proteção de conta poupança
